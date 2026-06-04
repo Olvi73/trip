@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>益阳两天一晚 · 自驾出行计划</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap');
+
+  :root {
+    --bg: #f5f0eb;
+    --card: #ffffff;
+    --text: #2c2c2c;
+    --text-light: #6b6b6b;
+    --accent: #c0583e;
+    --accent-light: #e8a090;
+    --accent-bg: #fdf2ef;
+    --green: #4a7c6f;
+    --green-bg: #edf5f1;
+    --blue: #4a6fa5;
+    --blue-bg: #eef2f8;
+    --shadow: 0 2px 20px rgba(0,0,0,0.06);
+    --shadow-hover: 0 8px 30px rgba(0,0,0,0.1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(160deg, #2c2c2c 0%, #4a3f35 40%, #c0583e 100%);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 80%, rgba(192,88,62,0.3) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(74,124,111,0.2) 0%, transparent 50%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 0.4rem 1.2rem;
+    border-radius: 100px;
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 span {
+    display: block;
+    font-size: 0.4em;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 6px;
+    margin-top: 0.8rem;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-meta-item {
+    text-align: center;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .hero-meta-item .num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    display: block;
+  }
+
+  .hero-meta-item .label {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.4);
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ── Layout ── */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  section {
+    padding: 5rem 0;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+    line-height: 1.4;
+  }
+
+  /* ── Timeline ── */
+  .timeline {
+    position: relative;
+    padding-left: 3rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.6rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent-light), var(--green), var(--blue));
+    opacity: 0.4;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.6s ease-out both;
+  }
+
+  .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+  .timeline-item:nth-child(2) { animation-delay: 0.15s; }
+  .timeline-item:nth-child(3) { animation-delay: 0.2s; }
+  .timeline-item:nth-child(4) { animation-delay: 0.25s; }
+  .timeline-item:nth-child(5) { animation-delay: 0.3s; }
+  .timeline-item:nth-child(6) { animation-delay: 0.35s; }
+  .timeline-item:nth-child(7) { animation-delay: 0.4s; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -2.6rem;
+    top: 1.4rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 2.5px solid var(--accent);
+    z-index: 1;
+    transition: transform 0.3s, background 0.3s;
+  }
+
+  .timeline-item:hover .timeline-dot {
+    transform: scale(1.3);
+    background: var(--accent);
+  }
+
+  .timeline-card {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 1.5rem 1.8rem;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.3s, transform 0.3s;
+  }
+
+  .timeline-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  .timeline-time {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+
+  .timeline-title {
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .timeline-desc {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  .timeline-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  .tag-food { background: var(--accent-bg); color: var(--accent); }
+  .tag-spot { background: var(--green-bg); color: var(--green); }
+  .tag-drive { background: var(--blue-bg); color: var(--blue); }
+  .tag-rest { background: #f0eef5; color: #6b5b8a; }
+
+  /* ── Day Divider ── */
+  .day-divider {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin: 3.5rem 0 2.5rem;
+  }
+
+  .day-divider::before,
+  .day-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--accent-light), transparent);
+  }
+
+  .day-divider .day-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent);
+    white-space: nowrap;
+    padding: 0.3rem 1rem;
+    border: 1.5px solid var(--accent-light);
+    border-radius: 100px;
+  }
+
+  /* ── Food Grid ── */
+  .food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+  }
+
+  .food-card {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .food-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+
+  .food-card:hover::before { transform: scaleX(1); }
+  .food-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+
+  .food-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .food-name {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .food-detail {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  .food-when {
+    display: inline-block;
+    font-size: 0.68rem;
+    color: var(--accent);
+    background: var(--accent-bg);
+    padding: 0.15rem 0.5rem;
+    border-radius: 100px;
+    margin-top: 0.6rem;
+  }
+
+  /* ── Tips ── */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .tip-item {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+    box-shadow: var(--shadow);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    transition: transform 0.3s;
+  }
+
+  .tip-item:hover { transform: translateY(-2px); }
+
+  .tip-item .tip-icon {
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+    display: block;
+  }
+
+  .tip-item strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--text-light);
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+  }
+
+  footer .route-line {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .timeline { padding-left: 2.2rem; }
+    .timeline-dot { left: -1.8rem; }
+    .timeline-card { padding: 1.2rem; }
+    section { padding: 3rem 0; }
+    .hero-meta { gap: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Road Trip · 2026</div>
+    <h1>
+      益阳之旅
+      <span>两天一晚 · 自驾出行</span>
+    </h1>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="num">3</span>
+        <span class="label">天行程</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="num">2</span>
+        <span class="label">座城市</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="num">~300</span>
+        <span class="label">公里总里程</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">↓ 向下滚动</div>
+</section>
+
+<div class="container">
+
+<!-- ═══════════════════ DAY 0 ═══════════════════ -->
+<section>
+  <div class="section-label">出发日</div>
+  <div class="section-title">6月5日 · 周五</div>
+
+  <div class="day-divider"><span class="day-num">DAY 0 — 长沙城铁 → 麓谷</span></div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-time">18:50</div>
+        <div class="timeline-title">长沙站出发 · 城铁</div>
+        <div class="timeline-desc">从长沙站（城铁站）乘坐城铁前往麓谷站，车程约 28 分钟。</div>
+        <span class="timeline-tag tag-drive">城铁 · 约28min</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-time">19:18</div>
+        <div class="timeline-title">到达麓谷站</div>
+        <div class="timeline-desc">到站后出站，准备觅食。</div>
+        <span class="timeline-tag tag-drive">到达</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-time">19:30 - 20:30</div>
+        <div class="timeline-title">觅食晚餐</div>
+        <div class="timeline-desc">麓谷片区美食集中，随便挑一家湘菜馆吃饱，为晚上的散步储备能量。</div>
+        <span class="timeline-tag tag-food">吃东西</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-time">20:30 - 22:00</div>
+        <div class="timeline-title">尖山湖公园散步</div>
+        <div class="timeline-desc">麓谷标志性公园，环湖步道约 3 公里，夜景灯光很适合饭后消食。吹吹湖风，放松心情。</div>
+        <span class="timeline-tag tag-spot">散步</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-time">23:30 前</div>
+        <div class="timeline-title">回住处，睡觉</div>
+        <div class="timeline-desc">养足精神，明天正式开启益阳之旅。建议住麓谷站附近，方便第二天一早自驾出发。</div>
+        <span class="timeline-tag tag-rest">休息</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ DAY 1 ═══════════════════ -->
+<section>
+  <div class="section-label">第二天</div>
+  <div class="section-title">6月6日 · 周六</div>
+
+  <div class="day-divider"><span class="day-num">DAY 1 — 麓谷 → 益阳 · 博物馆/古港/爬山</span></div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-time">7:00</div>
+        <div class="timeline-title">起床，出发去益阳</div>
+        <div class="timeline-desc">简单收拾后上高速，麓谷到益阳走长常高速约 1-1.5 小时，过路费约 40 元。</div>
+        <span class="timeline-tag tag-drive">自驾 · 约1h</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-time">8:00 - 8:45</div>
+        <div class="timeline-title">抵达益阳，吃早餐</div>
+        <div class="timeline-desc">到益阳先嗦碗粉！推荐 <strong>益阳牛肉粉</strong> 或 <strong>三鲜粉</strong>，配卤蛋和豆浆，地道的湖南早餐开启一天。</div>
+        <span class="timeline-tag tag-food">早餐 · 米粉</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-time">9:00 - 11:00</div>
+        <div class="timeline-title">益阳市博物馆</div>
+        <div class="timeline-desc">免费开放，了解益阳历史文化。馆内有竹器、民俗、黑茶文化等展区，值得细看。周六正常开放（周一闭馆）。</div>
+        <span class="timeline-tag tag-spot">博物馆 · 免费</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-time">11:15 - 12:15</div>
+        <div class="timeline-title">午餐 · 擂茶</div>
+        <div class="timeline-desc">益阳招牌美食！花生、芝麻、茶叶擂碎冲泡，配上炒米、小菜、盐姜，清爽解腻又管饱。安化擂茶馆最正宗。</div>
+        <span class="timeline-tag tag-food">擂茶</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-time">12:30 - 14:00</div>
+        <div class="timeline-title">明清古巷（古港）</div>
+        <div class="timeline-desc">益阳保存最完好的历史街区，青砖黛瓦马头墙，古码头、古商号林立。沿资江边的古港走一走，感受老益阳的商贸繁华。</div>
+        <span class="timeline-tag tag-spot">古港 · 古巷</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-time">14:00 - 14:30</div>
+        <div class="timeline-title">鸭霸王 · 下午茶</div>
+        <div class="timeline-desc">逛古巷的同时来一份鸭霸王，卤鸭脖、鸭翅、鸭掌，湘味重辣，边走边吃才是正确打开方式。</div>
+        <span class="timeline-tag tag-food">鸭霸王</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-time">15:00 - 17:30</div>
+        <div class="timeline-title">碧云峰爬山</div>
+        <div class="timeline-desc">益阳城区附近最方便的登山点，山不高但视野开阔，登顶可俯瞰益阳城区和资江。往返约 2-2.5 小时，难度适中。</div>
+        <span class="timeline-tag tag-spot">爬山 · 2.5h</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-time">18:00 - 19:30</div>
+        <div class="timeline-title">晚餐 · 麻辣烫</div>
+        <div class="timeline-desc">自选串串，益阳麻辣烫口味偏辣偏咸，重口味的天堂。推荐毛肚、鸭血、藕片，配一碗冰绿豆沙解辣。</div>
+        <span class="timeline-tag tag-food">麻辣烫</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-time">19:30 - 20:30</div>
+        <div class="timeline-title">资江边散步消食</div>
+        <div class="timeline-desc">益阳的母亲河，沿江风光带夜景不错，消消食，感受小城的悠闲节奏。</div>
+        <span class="timeline-tag tag-spot">散步</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-time">21:00</div>
+        <div class="timeline-title">回酒店休息</div>
+        <div class="timeline-desc">早点休息，明天还有半天行程。</div>
+        <span class="timeline-tag tag-rest">休息</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ DAY 2 ═══════════════════ -->
+<section>
+  <div class="section-label">第三天</div>
+  <div class="section-title">6月7日 · 周日</div>
+
+  <div class="day-divider"><span class="day-num">DAY 2 — 益阳深度体验 → 返程</span></div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-time">7:00 - 7:45</div>
+        <div class="timeline-title">早餐 · 益阳米粉 round 2</div>
+        <div class="timeline-desc">换一家店再嗦一碗！试试<strong>榨菜肉丝粉</strong>或<strong>排骨粉</strong>，感受不同店家的味道差异。</div>
+        <span class="timeline-tag tag-food">早餐 · 米粉</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-time">8:00 - 9:30</div>
+        <div class="timeline-title">资江风光带 / 白鹿寺</div>
+        <div class="timeline-desc">沿资江走一走，看看益阳的晨景。白鹿寺是益阳古刹，闹中取静，值得一看。</div>
+        <span class="timeline-tag tag-spot">晨游</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-time">9:30 - 11:00</div>
+        <div class="timeline-title">逛老城区 · 买特产</div>
+        <div class="timeline-desc">逛逛益阳老街巷，买点伴手礼：安化黑茶、益阳松花皮蛋、擂茶原料包，带给家人朋友。</div>
+        <span class="timeline-tag tag-spot">特产</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-time">11:00 - 12:00</div>
+        <div class="timeline-title">午餐</div>
+        <div class="timeline-desc">在益阳吃最后一顿，可以再尝尝擂茶或者找个本地菜馆吃顿正经湘菜。</div>
+        <span class="timeline-tag tag-food">午餐</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-time">12:00 - 13:30</div>
+        <div class="timeline-title">自驾返回长沙</div>
+        <div class="timeline-desc">上高速，益阳到长沙约 1-1.5 小时，预计 13:30 左右到家。收假！</div>
+        <span class="timeline-tag tag-drive">自驾 · 约1.5h</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FOOD ═══════════════════ -->
+<section>
+  <div class="section-label">美食清单</div>
+  <div class="section-title">益阳必吃</div>
+
+  <div class="food-grid">
+    <div class="food-card">
+      <span class="food-icon">🍵</span>
+      <div class="food-name">擂茶</div>
+      <div class="food-detail">花生、芝麻、茶叶擂碎冲泡，配炒米、小菜、盐姜。安化最正宗。</div>
+      <span class="food-when">Day 1 午餐</span>
+    </div>
+    <div class="food-card">
+      <span class="food-icon">🦆</span>
+      <div class="food-name">鸭霸王</span>
+      <div class="food-detail">卤鸭脖、鸭翅、鸭掌，湘味重辣卤味。边逛古巷边吃最过瘾。</div>
+      <span class="food-when">Day 1 下午茶</span>
+    </div>
+    <div class="food-card">
+      <span class="food-icon">🍲</span>
+      <div class="food-name">麻辣烫</span>
+      <div class="food-detail">自选串串，益阳风味偏辣偏咸。毛肚、鸭血、藕片必点，配冰绿豆沙。</div>
+      <span class="food-when">Day 1 晚餐</span>
+    </div>
+    <div class="food-card">
+      <span class="food-icon">🍜</span>
+      <div class="food-name">益阳米粉</span>
+      <div class="food-detail">湖南早餐标配，推荐牛肉粉、三鲜粉、排骨粉，每家味道不同。</div>
+      <span class="food-when">Day 1-2 早餐</span>
+    </div>
+    <div class="food-card">
+      <span class="food-icon">🍩</span>
+      <div class="food-name">糖油粑粑</span>
+      <div class="food-detail">糯米粉炸制，裹上红糖浆，甜糯焦香。湖南街头经典小吃。</div>
+      <span class="food-when">随时加餐</span>
+    </div>
+    <div class="food-card">
+      <span class="food-icon">🥚</span>
+      <div class="food-name">松花皮蛋</span>
+      <div class="food-detail">益阳特产，蛋白晶莹如松花，口感细腻无腥味，适合带回家。</div>
+      <span class="food-when">买特产</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ TIPS ═══════════════════ -->
+<section>
+  <div class="section-label">出行提醒</div>
+  <div class="section-title">行前须知</div>
+
+  <div class="tips-grid">
+    <div class="tip-item">
+      <span class="tip-icon">🌧️</span>
+      <strong>天气</strong><br>
+      6月是湖南雨季，随身带伞。山路湿滑注意脚下。
+    </div>
+    <div class="tip-item">
+      <span class="tip-icon">🚗</span>
+      <strong>自驾</strong><br>
+      长常高速路况良好，注意益阳市区单行线较多，导航优先。
+    </div>
+    <div class="tip-item">
+      <span class="tip-icon">🅿️</span>
+      <strong>停车</strong><br>
+      古巷周边停车位紧张，建议停在附近商场步行前往。
+    </div>
+    <div class="tip-item">
+      <span class="tip-icon">💰</span>
+      <strong>预算</strong><br>
+      两天一晚人均约 600-900 元（含油费、过路费、住宿、餐饮）。
+    </div>
+    <div class="tip-item">
+      <span class="tip-icon">👟</span>
+      <strong>装备</strong><br>
+      碧云峰爬山穿运动鞋，带水和干粮。备一件薄外套防山风。
+    </div>
+    <div class="tip-item">
+      <span class="tip-icon">📱</span>
+      <strong>导航</strong><br>
+      建议提前离线下载益阳地图，山区信号可能不稳定。
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer>
+  <div class="route-line">长沙 → 麓谷 → 益阳 → 长沙</div>
+  <div>益阳两天一晚 · 自驾出行计划 · 2026.06</div>
+</footer>
+
+</body>
+</html>
